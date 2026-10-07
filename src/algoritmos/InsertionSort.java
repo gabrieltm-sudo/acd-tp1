@@ -1,4 +1,4 @@
-public Class InsertionSort{
+public class InsertionSort{
 
 
 }
