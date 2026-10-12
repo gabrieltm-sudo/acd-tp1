@@ -2,6 +2,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 import algoritmos.BubbleSort;
 import algoritmos.SelectionSort;
+import algoritmos.HeapSort;
+import algoritmos.QuickSort;
 //import algortimos.*; para usar todas as classes dentro de /algoritmos
 
 public class Main{
@@ -67,6 +69,44 @@ public class Main{
                 tempoTotalMs = tempoTotalNano / 1_000_000.0;
 
                 System.out.println("Tempo de execução BubbleSort: " + tempoTotalMs + " ms");
+
+                System.out.println("\n");
+
+                System.out.println("HEAP SORT");
+
+                inicio = System.nanoTime();
+
+                HeapSort.ordenador(vetor);
+
+                fim = System.nanoTime();
+
+                System.out.println("Depois da ordenação HeapSort:  " + Arrays.toString(vetor));
+
+                tempoTotalNano = fim - inicio;
+
+                tempoTotalMs = tempoTotalNano / 1_000_000.0;
+
+                System.out.println("Tempo de execução HeapSort: " + tempoTotalMs + " ms");
+
+                System.out.println("\n");
+
+                System.out.println("QUICK SORT");
+
+                inicio = System.nanoTime();
+
+                int n = vetor.length;
+
+                QuickSort.ordenador(vetor, 0, n - 1);
+
+                fim = System.nanoTime();
+
+                System.out.println("Depois da ordenação QuickSort:  " + Arrays.toString(vetor));
+
+                tempoTotalNano = fim - inicio;
+
+                tempoTotalMs = tempoTotalNano / 1_000_000.0;
+
+            System.out.println("Tempo de execução QuickSort: " + tempoTotalMs + " ms");
 
     }
 
