@@ -20,7 +20,7 @@ public class Vetores {
         Random random = new Random();
 
         for (int i = 0; i < tamanho; i++) {
-            vetor[i] = random.nextInt(200);
+            vetor[i] = random.nextInt(500);
         }
 
         return vetor;
