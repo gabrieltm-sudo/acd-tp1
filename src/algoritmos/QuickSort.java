@@ -11,25 +11,8 @@ public class QuickSort{
     }
 
     static int particao(int[] vetor, int esq, int dir){
-
-        int meio = (esq + dir) / 2;
-
-        int primeiro = vetor[esq];
-        int central = vetor[meio];
-        int ultimo = vetor[dir];
-
-        int pivo;
-
-        if ((primeiro >= central && primeiro <= ultimo) || (primeiro <= central && primeiro >= ultimo)){
-            pivo = primeiro;
-        }
-        else if ((central >= primeiro && central <= ultimo) || (central <= primeiro && central >= ultimo)){
-            pivo = central;
-        }
-        else {
-            pivo = ultimo;
-        }
-
+        int meio = (int)((esq + dir)  / 2);
+        int pivo = vetor[meio];
         int i = esq - 1;
         int j = dir + 1;
 
@@ -49,6 +32,5 @@ public class QuickSort{
             vetor[j] = aux;
 
         }
-
     }
 }
