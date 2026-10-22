@@ -1,113 +1,70 @@
 import java.util.Arrays;
 import java.util.Scanner;
-import algoritmos.BubbleSort;
-import algoritmos.SelectionSort;
-import algoritmos.HeapSort;
-import algoritmos.QuickSort;
-//import algortimos.*; para usar todas as classes dentro de /algoritmos
 
-public class Main{
+import algoritmos.CountingSort;
 
-    public static void main(String[] args){
+public class Main {
+
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
-        int[] vetor = null;
-
-        System.out.println("Escolha o vetor utilizado:\n1. Vetor ordenado\n2. vetor medio\n3. vetor inverso\n4. Vetor aleatório\nEscolha: ");
-
+        Integer[] vetor = null; 
+        long inicio, fim;
+        
+        Menu();
+        System.out.print("Selecione uma das opções acima: ");        
         int esc = scanner.nextInt();
-
-        switch(esc){
-            case 1:
-                vetor = Vetores.getVetorOrdenado();
-                break;
-            case 2:
-                vetor = Vetores.getVetorMedio();
-                break;
-            case 3:
-                vetor = Vetores.getVetorInverso();
-                break;
-            case 4:
-                vetor = Vetores.getVetorRandomico();
+        
+        if (esc == 0) {
+            System.out.println("Encerrando o programa...");
+            scanner.close();
+            return;
+        } else if (esc < 1 || esc > 4) {
+            System.out.println("[ ERRO ] Opção inválida! Por favor, selecione uma das opções disponíveis.");
+            scanner.close();
+            return;
         }
 
-                System.out.println("VETOR A SER ORDENADO:  " + Arrays.toString(vetor));
+        System.out.print("Digite o tamanho do vetor para o teste (ex: 10, 1000, 100000): ");
+        int tamanho = scanner.nextInt();
+        
+        System.out.println("========================================");
+        
+        switch(esc) {
+            case 1:
+                vetor = Vetores.getVetorOrdenado(tamanho);    
+                break;
+            case 2:
+                vetor = Vetores.getVetorAleatorio(tamanho);
+                break;
+            case 3:
+                vetor = Vetores.getVetorInverso(tamanho);
+                break;
+            case 4:
+                // Opção 4 ativada
+                vetor = Vetores.getVetorRepetido(tamanho);
+                break;
+        }
 
-                System.out.println("\n");
+        System.out.println("Elementos antes da ordenação: " + Arrays.toString(vetor));
+    
+        inicio = System.nanoTime();
+        int k = CountingSort.getMaiorValor(vetor);
+        CountingSort.ordenador(vetor, vetor.length, k);
+        fim = System.nanoTime();
 
-                System.out.println("SELECTION SORT");
-
-                long inicio = System.nanoTime();
-
-                SelectionSort.ordenador(vetor);
-
-                long fim = System.nanoTime();
-
-                System.out.println("Depois da ordenação SelectionSort:  " + Arrays.toString(vetor));
-
-                long tempoTotalNano = fim - inicio;
-
-                double tempoTotalMs = tempoTotalNano / 1_000_000.0;
-
-                System.out.println("Tempo de execução SelectionSort: " + tempoTotalMs + " ms");
-
-                System.out.println("\n");
-
-                System.out.println("BUBBLE SORT");
-
-                inicio = System.nanoTime();
-
-                BubbleSort.ordenador(vetor);
-
-                fim = System.nanoTime();
-
-                System.out.println("Depois da ordenação BubbleSort:  " + Arrays.toString(vetor));
-
-                tempoTotalNano = fim - inicio;
-
-                tempoTotalMs = tempoTotalNano / 1_000_000.0;
-
-                System.out.println("Tempo de execução BubbleSort: " + tempoTotalMs + " ms");
-
-                System.out.println("\n");
-
-                System.out.println("HEAP SORT");
-
-                inicio = System.nanoTime();
-
-                HeapSort.ordenador(vetor);
-
-                fim = System.nanoTime();
-
-                System.out.println("Depois da ordenação HeapSort:  " + Arrays.toString(vetor));
-
-                tempoTotalNano = fim - inicio;
-
-                tempoTotalMs = tempoTotalNano / 1_000_000.0;
-
-                System.out.println("Tempo de execução HeapSort: " + tempoTotalMs + " ms");
-
-                System.out.println("\n");
-
-                System.out.println("QUICK SORT");
-
-                inicio = System.nanoTime();
-
-                int n = vetor.length;
-
-                QuickSort.ordenador(vetor, 0, n - 1);
-
-                fim = System.nanoTime();
-
-                System.out.println("Depois da ordenação QuickSort:  " + Arrays.toString(vetor));
-
-                tempoTotalNano = fim - inicio;
-
-                tempoTotalMs = tempoTotalNano / 1_000_000.0;
-
-            System.out.println("Tempo de execução QuickSort: " + tempoTotalMs + " ms");
-
+        System.out.println("Elementos depois da ordenação: " + Arrays.toString(vetor) + " | Execução em  " + (fim - inicio) + " nanosegundos");
+        
+        scanner.close();
     }
 
+    public static void Menu() {
+        System.out.println("================= MENU =================");
+        System.out.println("1. Ordenar elementos em ordem crescente");
+        System.out.println("2. Ordenar elementos em ordem aleatória");
+        System.out.println("3. Ordenar elementos em ordem decrescente");
+        System.out.println("4. Ordenar elementos com várias ocorrências repetidas");
+        System.out.println("0. Encerrar programa");
+    }
 }
