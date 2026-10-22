@@ -1,10 +1,11 @@
 package algoritmos;
 
-public class CoutingSort {
-    public static void ordenador(int[] vetor, int n, int k){
-        int[] B = new int[n], C = new int[k+1];
+public class CountingSort {
+    public static void ordenador(Integer[] vetor, int n, int k){
+        Integer[] B = new Integer[n];
+        int[] C = new int[k+1];
 
-        for(int i=0; i<k; i++){
+        for(int i=0; i<=k; i++){
             C[i] = 0;
         }
 
@@ -20,13 +21,13 @@ public class CoutingSort {
             B[C[vetor[j]]-1] = vetor[j];
             C[vetor[j]] = C[vetor[j]]-1;
         }
-        // TODO: Verificar se verdadeiramente é necessário esse for - Como proceder com o vetor cópia B
+        
         for (int j=0; j<n; j++) {
             vetor[j] = B[j];
         }
     }
 
-    public static int getMaiorValor(int[] vetor){
+    public static int getMaiorValor(Integer[] vetor){
         int k=0;
         for(int i=0; i<vetor.length; i++){
             if(vetor[i]>k){
