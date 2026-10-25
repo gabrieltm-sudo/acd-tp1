@@ -1,11 +1,6 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
-import algoritmos.EnumAlgoritmos;
-import algoritmos.CountingSort;
-import algoritmos.BucketSort;
-import algoritmos.MergeSort;
-import algoritmos.InsertionSort;
+import algoritmos.*;
 
 public class Main {
 
@@ -46,7 +41,6 @@ public class Main {
                 vetor = Vetores.getVetorInverso(tamanho);
                 break;
             case 4:
-                // Opção 4 ativada
                 vetor = Vetores.getVetorRepetido(tamanho);
                 break;
         }
