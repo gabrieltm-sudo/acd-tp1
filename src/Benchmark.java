@@ -133,11 +133,26 @@ public class Benchmark {
             case INSERTION: 
                 InsertionSort.ordenador(vetor); 
                 break;
+            case BUBBLE: 
+                BubbleSort.ordenador(vetor); 
+                break;
+            case SELECT: 
+                SelectionSort.ordenador(vetor);
+                break;
             case SHELL: 
                 ShellSort.ordenador(vetor, vetor.length);
                 break;
             case MERGE: 
                 MergeSort.ordenador(vetor); 
+                break;
+            case QUICK: 
+                QuickSort.ordenador(vetor, 0, vetor.length-1); 
+                break;
+            case HEAP: 
+                HeapSort.ordenador(vetor); 
+                break;
+            case RADIX: 
+                RadixSort.ordenador(vetor);
                 break;
             case COUNTING: 
                 int k = CountingSort.getMaiorValor(vetor);
@@ -146,6 +161,7 @@ public class Benchmark {
             case BUCKET: 
                 BucketSort.ordenador(vetor, vetor.length); 
                 break;
+            
             default: break;
         }
     }

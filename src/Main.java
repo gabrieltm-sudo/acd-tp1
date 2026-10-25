@@ -72,26 +72,25 @@ public class Main {
                 InsertionSort.ordenador(vetorCopia);
                 break;
             case BUBBLE:
-
+                BubbleSort.ordenador(vetorCopia);
                 break;
             case SELECT:
-
+                SelectionSort.ordenador(vetorCopia);
                 break;
             case SHELL:
-
+                ShellSort.ordenador(vetorCopia, vetorCopia.length);
                 break;
-
             case MERGE:
                 MergeSort.ordenador(vetorCopia);
                 break;
             case QUICK:
-
+                QuickSort.ordenador(vetorCopia, 0, vetorCopia.length-1);
                 break;
             case HEAP:
-
+                HeapSort.ordenador(vetorCopia);
                 break;
             case RADIX:
-
+                RadixSort.ordenador(vetorCopia);
                 break;
             case COUNTING:
                 int k = CountingSort.getMaiorValor(vetor);
