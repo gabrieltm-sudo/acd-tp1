@@ -1,36 +1,37 @@
 package algoritmos;
 
-public class QuickSort{
+public class QuickSort {
 
-    public static void ordenador(int[] vetor, int esq, int dir){
-        if(esq < dir){
-         int p = particao(vetor, esq, dir);
-         ordenador(vetor, esq, p);
-         ordenador(vetor, p + 1, dir);
+    public static <T extends Comparable<T>> void ordenador(T[] vetor, int esq, int dir){
+        if (esq < dir) {
+            int p = particao(vetor, esq, dir);
+            ordenador(vetor, esq, p);
+            ordenador(vetor, p + 1, dir);
         }
     }
 
-    static int particao(int[] vetor, int esq, int dir){
-        int meio = (int)((esq + dir)  / 2);
-        int pivo = vetor[meio];
+    private static <T extends Comparable<T>> int particao(T[] vetor, int esq, int dir){
+        int meio = (esq + dir) / 2;
+        T pivo = vetor[meio];
         int i = esq - 1;
         int j = dir + 1;
 
-        while(true){
+        while (true){
             do{
                 i++;
-            }while(vetor[i] < pivo);
+            } while (vetor[i].compareTo(pivo) < 0);
+
             do{
                 j--;
-            }while(vetor[j] > pivo);
-            if(i >= j){
+            } while (vetor[j].compareTo(pivo) > 0);
+
+            if (i >= j){
                 return j;
             }
 
-            int aux = vetor[i];
+            T aux = vetor[i];
             vetor[i] = vetor[j];
             vetor[j] = aux;
-
         }
     }
 }

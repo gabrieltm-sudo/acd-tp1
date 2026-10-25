@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-import algoritmos.CountingSort;
+import algoritmos.RadixSort;
 
 public class Main {
 
@@ -42,7 +42,6 @@ public class Main {
                 vetor = Vetores.getVetorInverso(tamanho);
                 break;
             case 4:
-                // Opção 4 ativada
                 vetor = Vetores.getVetorRepetido(tamanho);
                 break;
         }
@@ -50,8 +49,7 @@ public class Main {
         System.out.println("Elementos antes da ordenação: " + Arrays.toString(vetor));
     
         inicio = System.nanoTime();
-        int k = CountingSort.getMaiorValor(vetor);
-        CountingSort.ordenador(vetor, vetor.length, k);
+        RadixSort.ordenador(vetor);
         fim = System.nanoTime();
 
         System.out.println("Elementos depois da ordenação: " + Arrays.toString(vetor) + " | Execução em  " + (fim - inicio) + " nanosegundos");
