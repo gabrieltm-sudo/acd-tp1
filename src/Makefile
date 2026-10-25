@@ -1,8 +1,15 @@
-run:
-		javac Main.java Vetores.java algoritmos/*.java
-		java Main
+BIN_DIR = bytecodes
+
+run: compile
+	java -cp $(BIN_DIR) Main
+benchmark: compile
+	java -cp $(BIN_DIR) Benchmark
 compile:
-		javac Main.java Vetores.java algoritmos/*.java
+	@mkdir -p $(BIN_DIR)
+	javac -d $(BIN_DIR) Main.java Benchmark.java Vetores.java algoritmos/*.java
 
 rm:
-		rm -f *.class algoritmos/*.class
+	rm -rf $(BIN_DIR)
+
+rmcsv:
+	rm -rf logs
