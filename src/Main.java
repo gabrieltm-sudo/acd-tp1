@@ -27,6 +27,11 @@ public class Main {
 
         System.out.print("Digite o tamanho do vetor para o teste (ex: 10, 1000, 100000): ");
         int tamanho = scanner.nextInt();
+        if (tamanho <= 0) {
+            System.out.println("[ ERRO ] O tamanho do vetor deve ser maior que zero.");
+            scanner.close();
+            return;
+        }
         
         System.out.println("========================================");
         
@@ -93,7 +98,7 @@ public class Main {
                 RadixSort.ordenador(vetorCopia);
                 break;
             case COUNTING:
-                int k = CountingSort.getMaiorValor(vetor);
+                int k = CountingSort.getMaiorValor(vetorCopia);
                 CountingSort.ordenador(vetorCopia, vetorCopia.length, k);
                 break;
             case BUCKET:
